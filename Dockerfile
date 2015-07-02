@@ -1,6 +1,6 @@
 FROM sabayon/gentoo-stage3-amd64
 
-MAINTAINER mudler <sabayonlinux.org>
+MAINTAINER mudler <mudler@sabayonlinux.org>
 
 # Copy busybox and temporary files to the container
 COPY bin /bin/
