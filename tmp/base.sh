@@ -51,11 +51,18 @@ echo "Cleaning the source files directory..."
 emerge --quiet gentoolkit
 eclean-dist --deep --quiet
 
+echo "Installing layman"
+emerge -j sys-apps/texinfo
+USE="ncurses" emerge -j layman
+echo "source /var/lib/layman/make.conf" >> /etc/portage/make.conf
+
 #echo "Packaging development tools..."
 #quickpkg --include-config y autoconf automake bison yacc binutils libtool gcc localepurge libltdl autoconf-wrapper binutils-config help2man automake-wrapper gcc-config mpc mpfr gmp
 
 echo "Cleaning the system..."
+# we need gcc out-of-the-box
 #emerge --unmerge --quiet autoconf automake bison yacc binutils libtool gcc localepurge
+
 #emerge --depclean --quiet
 if [ -f /etc/resolv.conf ]
 then
