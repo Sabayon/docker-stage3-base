@@ -55,7 +55,7 @@ eclean-dist --deep --quiet
 #quickpkg --include-config y autoconf automake bison yacc binutils libtool gcc localepurge libltdl autoconf-wrapper binutils-config help2man automake-wrapper gcc-config mpc mpfr gmp
 
 echo "Cleaning the system..."
-emerge --unmerge --quiet autoconf automake bison yacc binutils libtool gcc localepurge
+#emerge --unmerge --quiet autoconf automake bison yacc binutils libtool gcc localepurge
 #emerge --depclean --quiet
 if [ -f /etc/resolv.conf ]
 then
