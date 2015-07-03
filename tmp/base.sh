@@ -39,7 +39,7 @@ find / -type f \( -perm -4000 -or -perm -2000 \) -links +1 ! -path "/proc/*" -ex
 emerge -j --emptytree --update --deep --newuse --quiet @world
 
 echo "Updating configuration files..."
-etc-update --preen --quiet
+/usr/sbin/etc-update --preen --quiet
 find /etc/ -name "._cfg[0-9][0-9][0-9][0-9]*" -exec rm {} \;
 
 echo "Purging unused locales..."
@@ -51,21 +51,19 @@ echo "Cleaning the source files directory..."
 emerge --quiet gentoolkit
 eclean-dist --deep --quiet
 
-echo "Packaging development tools..."
-quickpkg --include-config y autoconf automake bison yacc binutils libtool gcc localepurge libltdl autoconf-wrapper binutils-config help2man automake-wrapper gcc-config mpc mpfr gmp
+#echo "Packaging development tools..."
+#quickpkg --include-config y autoconf automake bison yacc binutils libtool gcc localepurge libltdl autoconf-wrapper binutils-config help2man automake-wrapper gcc-config mpc mpfr gmp
 
 echo "Cleaning the system..."
 emerge --unmerge --quiet autoconf automake bison yacc binutils libtool gcc localepurge
-emerge --depclean --quiet
+#emerge --depclean --quiet
 if [ -f /etc/resolv.conf ]
 then
 	echo "nameserver 8.8.8.8" > /etc/resolv.conf
 	echo "nameserver 8.8.4.4" >> /etc/resolv.conf
 fi
 mkdir --parents /usr/local/bin
-mv /tmp/portagepurge /usr/local/bin/portagepurge
-chmod +x /usr/local/bin/portagepurge
-portagepurge
+
 
 echo "Setting the default options for emerge..."
 grep --quiet "EMERGE_DEFAULT_OPTS=" /etc/portage/make.conf || sed -i '/FEATURES=/a EMERGE_DEFAULT_OPTS="--usepkg --buildpkg"' /etc/portage/make.conf

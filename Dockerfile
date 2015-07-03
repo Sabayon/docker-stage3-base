@@ -8,6 +8,7 @@ COPY tmp /tmp/
 
 # Install a stage tarball
 RUN /tmp/base.sh && \
+    chmod +x /tmp/portagepurge && /bin/bash /tmp/portagepurge && \
     rm --force --recursive /tmp/* /usr/portage/packages/*
 
 # Create a mount point for binary packages
