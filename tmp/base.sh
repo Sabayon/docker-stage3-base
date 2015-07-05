@@ -17,7 +17,7 @@ echo "Updating the portage tree..."
 emerge --sync --quiet
 
 echo "Choosing the right profile..."
-eselect profile set "default/linux/amd64/13.0/no-multilib"
+eselect profile set "default/linux/amd64/13.0/desktop"
 mkdir --parents /etc/portage/package.use /etc/portage/profile
 mv /tmp/packages /etc/portage/profile/packages
 echo "dev-util/pkgconfig internal-glib" > /etc/portage/package.use/pkgconfig
