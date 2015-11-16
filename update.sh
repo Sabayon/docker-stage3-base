@@ -54,9 +54,6 @@ sync-uri = rsync://rsync.europe.gentoo.org/gentoo-portage
 compressed="$base.tar"
 ( set -x; docker export "$container" > "$compressed" )
 
-docker rm "$container"
-docker rmi "$image"
-
 echo 'FROM scratch' > Dockerfile
 echo "ADD $compressed /" >> Dockerfile
 echo 'CMD ["/bin/bash"]' >> Dockerfile
