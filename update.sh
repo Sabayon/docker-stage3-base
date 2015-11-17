@@ -12,7 +12,9 @@ if [ -z "$stage3" ]; then
 	exit 1
 fi
 
+stage3="20150924/stage3-amd64-20150924.tar.bz2"
 url="http://distfiles.gentoo.org/releases/amd64/autobuilds/$stage3"
+
 name="$(basename "$stage3")"
 
 ( set -x; wget -N "$url" )
