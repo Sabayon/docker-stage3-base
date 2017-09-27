@@ -12,7 +12,7 @@ if [ -z "$stage3" ]; then
 	exit 1
 fi
 
-stage3="20150924/stage3-amd64-20150924.tar.bz2"
+#stage3="20150924/stage3-amd64-20150924.tar.bz2"
 url="http://distfiles.gentoo.org/releases/amd64/autobuilds/$stage3"
 
 name="$(basename "$stage3")"
@@ -31,7 +31,7 @@ docker rm -f "$container" > /dev/null 2>&1 || true
 	export MAKEOPTS="-j$(nproc)"
 	#pythonTarget="$(emerge --info | sed -n \'s/.*PYTHON_TARGETS="\\([^"]*\\)".*/\\1/p\')"
 	#pythonTarget="${pythonTarget##* }"
-	pythonTarget="python2_7"
+	pythonTarget="python2_7 python3_5"
 	echo \'PYTHON_TARGETS="\'$pythonTarget\'"\' >> /etc/portage/make.conf
 	echo \'PYTHON_SINGLE_TARGET="\'$pythonTarget\'"\' >> /etc/portage/make.conf
 	mkdir /usr/portage
