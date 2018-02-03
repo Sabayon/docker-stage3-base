@@ -24,7 +24,7 @@ image="gentoo-temp:$base"
 container="gentoo-temp-$base"
 
 # bzcat thanks to https://code.google.com/p/go/issues/detail?id=7279
-( set -x; bzcat "$name" | docker import - "$image" )
+( set -x; xzcat "$name" | docker import - "$image" )
 
 docker rm -f "$container" > /dev/null 2>&1 || true
 ( set -x; docker run -t --name "$container" "$image" bash -exc $'
