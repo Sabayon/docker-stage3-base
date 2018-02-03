@@ -45,7 +45,7 @@ sync-type = rsync
 sync-uri = rsync://rsync.europe.gentoo.org/gentoo-portage
 " > /etc/portage/repos.conf/gentoo.conf
 	emerge-webrsync
-	eselect profile set default/linux/amd64/13.0
+	eselect profile set 16
 	emerge -j --newuse --deep --with-bdeps=y @system @world
 	emerge -C editor ssh man man-pages openrc e2fsprogs service-manager
 	emerge -j layman
