@@ -34,6 +34,7 @@ docker rm -f "$container" > /dev/null 2>&1 || true
 	pythonTarget="python2_7 python3_5"
 	echo \'PYTHON_TARGETS="\'$pythonTarget\'"\' >> /etc/portage/make.conf
 	echo \'PYTHON_SINGLE_TARGET="\'$pythonTarget\'"\' >> /etc/portage/make.conf
+	echo \'dev-libs/gobject-introspection -python_single_target_python3_5\' >> /etc/portage/package.use/99_build
 	mkdir /usr/portage
 mkdir -p /etc/portage/repos.conf/
 echo "[DEFAULT]
@@ -52,6 +53,7 @@ sync-uri = rsync://rsync.europe.gentoo.org/gentoo-portage
 	emerge -j @preserved-rebuild
 	emerge --depclean
 	rm -rf /usr/portage/packages
+	rm -rf /etc/portage/package.use/99_build
 ' )
 
 compressed="$base.tar"
