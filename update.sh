@@ -34,6 +34,7 @@ docker rm -f "$container" > /dev/null 2>&1 || true
 	pythonTarget="python2_7 python3_5"
 	echo \'PYTHON_TARGETS="\'$pythonTarget\'"\' >> /etc/portage/make.conf
 	echo \'PYTHON_SINGLE_TARGET="\'$pythonTarget\'"\' >> /etc/portage/make.conf
+	echo \'FEATURES="-sandbox -usersandbox"\'  >> /etc/portage/make.conf
 	echo \'dev-libs/gobject-introspection -python_single_target_python3_5\' >> /etc/portage/package.use/99_build
 	mkdir /usr/portage
 mkdir -p /etc/portage/repos.conf/
